@@ -79,3 +79,7 @@ set (LIBP4CTOOLKIT_HDRS
 add_cpplint_files (${CMAKE_CURRENT_SOURCE_DIR} "${LIBP4CTOOLKIT_SRCS};${LIBP4CTOOLKIT_HDRS}")
 build_unified(LIBP4CTOOLKIT_SRCS ALL)
 add_library(p4ctoolkit STATIC ${LIBP4CTOOLKIT_SRCS})
+#Bala P4_SO
+add_library(p4ctoolkit-shlib SHARED ${LIBP4CTOOLKIT_SRCS})
+target_link_libraries (p4ctoolkit-shlib /usr/lib/x86_64-linux-gnu/libgc.so /usr/lib/x86_64-linux-gnu/libgccpp.so /usr/lib/x86_64-linux-gnu/libgmpxx.so /usr/lib/x86_64-linux-gnu/libgmp.so)
+#Bala
