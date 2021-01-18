@@ -257,3 +257,10 @@ endif ()
 add_library (frontend STATIC ${FRONTEND_SOURCES} ${EXTENSION_FRONTEND_SOURCES})
 add_dependencies (frontend genIR)
 add_dependencies (frontend mkp4dirs mkv1dirs)
+#Bala P4_SO
+add_library (frontend-shlib SHARED ${FRONTEND_SOURCES} ${EXTENSION_FRONTEND_SOURCES})
+target_link_libraries (frontend-shlib /usr/lib/x86_64-linux-gnu/libboost_iostreams.so /usr/lib/x86_64-linux-gnu/libboost_regex.so)
+add_dependencies (frontend-shlib genIR)
+add_dependencies (frontend-shlib mkp4dirs mkv1dirs )
+#Bala 
+

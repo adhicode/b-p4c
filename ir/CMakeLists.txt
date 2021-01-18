@@ -65,3 +65,7 @@ add_cpplint_files (${CMAKE_CURRENT_SOURCE_DIR} "${IR_SRCS};${IR_HDRS}")
 build_unified(IR_SRCS)
 add_library (ir STATIC ${IR_SRCS})
 add_dependencies(ir genIR)
+#Bala P4_SO
+add_library (ir-shlib SHARED ${IR_SRCS})
+add_dependencies(ir-shlib genIR)
+#Bala

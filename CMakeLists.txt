@@ -33,6 +33,9 @@ OPTION (ENABLE_GTESTS "Enable building and running GTest unit tests" ON)
 OPTION (ENABLE_BMV2 "Build the BMV2 backend (required for the full test suite)" ON)
 OPTION (ENABLE_EBPF "Build the EBPF backend (required for the full test suite)" ON)
 OPTION (ENABLE_P4TEST "Build the P4Test backend (required for the full test suite)" ON)
+# Bala P4_SO
+OPTION (ENABLE_P4FRONTENDLIB "Build the P4 front/midend shared lib (required for the full test suite)" ON)
+# Bala 
 OPTION (ENABLE_P4C_GRAPHS "Build the p4c-graphs backend" ON)
 OPTION (ENABLE_PROTOBUF_STATIC "Link against Protobuf statically" ON)
 OPTION (ENABLE_GC "Use libgc" ON)
@@ -243,6 +246,9 @@ add_subdirectory (ir)
 # component libraries: must be defined before being used in the
 # backend executables
 set (P4C_LIBRARIES controlplane midend frontend ir p4ctoolkit)
+#Bala P4_SO
+set (P4_SHARED_LIBRARIES p4ctoolkit-shlib ir-shlib frontend-shlib midend-shlib controlplane-shlib /usr/lib/x86_64-linux-gnu/libgccpp.so /usr/lib/x86_64-linux-gnu/libgc.so /usr/lib/x86_64-linux-gnu/libgmp.so)
+# Bala
 
 # add extensions - before the frontends as they produce IR and extra frontend sources
 set(EXTENSION_FRONTEND_SOURCES)
@@ -286,6 +292,12 @@ endif ()
 if (ENABLE_GTESTS)
   add_subdirectory (test)
 endif ()
+# Bala P4_SO
+if (ENABLE_P4FRONTENDLIB)
+    add_subdirectory (backends/p4frontendlib)
+endif ()
+# Bala 
+
 
 # IR Generation
 set_source_files_properties(${IR_GENERATOR} PROPERTIES GENERATED TRUE)

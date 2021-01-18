@@ -101,3 +101,9 @@ build_unified(CONTROLPLANE_SOURCES)
 add_library (controlplane STATIC ${CONTROLPLANE_SOURCES} )
 target_link_libraries (controlplane ${PROTOBUF_LIBRARY} ${CMAKE_THREAD_LIBS_INIT})
 add_dependencies (controlplane mkP4configdir genIR frontend)
+#Bala NPL_SO P4_SO
+add_library (controlplane-shlib SHARED ${CONTROLPLANE_SOURCES} )
+target_link_libraries (controlplane-shlib /usr/lib/x86_64-linux-gnu/libprotobuf.so  ${CMAKE_THREAD_LIBS_INIT})
+add_dependencies (controlplane-shlib mkP4configdir genIR frontend-shlib)
+#Bala
+
